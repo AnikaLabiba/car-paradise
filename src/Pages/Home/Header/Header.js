@@ -3,9 +3,14 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import logo from '../../../Images/bg-none.png'
 import { Link } from 'react-router-dom';
 import { RiUserHeartLine } from 'react-icons/ri';
+import { AiOutlineLogout } from 'react-icons/ai';
 import './Header.css'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
+    const [user] = useAuthState(auth)
     return (
         <div>
             <Navbar
@@ -31,7 +36,11 @@ const Header = () => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <Nav.Link as={Link} to="/login" className='d-flex align-items-center fs-5'><RiUserHeartLine /> <span className='ms-1'>Login</span></Nav.Link>
+                            {
+                                user ? <Nav.Link onClick={() => signOut(auth)} className='fs-5'><span>Logout</span> <AiOutlineLogout /></Nav.Link>
+
+                                    : <Nav.Link as={Link} to="/login" className='d-flex align-items-center fs-5'><RiUserHeartLine /> <span className='ms-1'>Login</span></Nav.Link>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

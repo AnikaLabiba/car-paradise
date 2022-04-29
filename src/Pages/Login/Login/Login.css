@@ -1,0 +1,35 @@
+.form-container{
+    background-color: rgb(80, 78, 78);
+    color: white;
+    padding: 30px;
+    width: 25%;
+}
+.form-container .submit-btn{
+    background-image: linear-gradient(to right, rgb(185, 183, 183), gray);
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+.form-container .submit-btn:hover{
+    background-image: linear-gradient(to right, rgb(56, 55, 55), rgb(56, 55, 55));
+    color: lightgray;
+}
+.social-box .social-btn{
+    background: none;
+    border: none;
+}
+/* .social-box .social-btn:hover{
+    background-color: lightgray;
+    border: none;
+} */
+@media only screen and (max-width:576px) {
+    .form-container{
+       width: 90%;
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .form-container{
+        width: 50%;
+    }
+}

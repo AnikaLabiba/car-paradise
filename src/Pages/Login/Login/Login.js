@@ -1,6 +1,8 @@
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Social from '../Social/Social';
+import './Login.css'
 
 const Login = () => {
     const handleLogin = event => {
@@ -8,22 +10,21 @@ const Login = () => {
     }
     return (
         <div>
-            <h2 className='text-center mt-5'>Please Login</h2>
-            <div className='w-25 mx-auto mt-3'>
+            <h2 className='text-center mt-5 font-weight-bold'>Please Login</h2>
+            <div className=' mx-auto mt-3 form-container'>
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control className='bg-dark border-0' type="email" placeholder="Enter email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control className='bg-dark border-0 text-muted' type="password" placeholder="Password" required />
                     </Form.Group>
-                    <p className='text-center'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
-                    <Button className='w-100' variant="primary" type="submit">
+                    <p className='text-center text-muted'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
+                    <button className='w-100 submit-btn py-2' type="submit">
                         Login
-                    </Button>
+                    </button>
+                    <p className='text-center mt-3'>Don't have an account? <br /><Link to='/signup'>Create Account</Link ></p>
                     <Social></Social>
                 </Form>
             </div>

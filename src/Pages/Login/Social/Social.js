@@ -6,28 +6,27 @@ import auth from '../../../firebase.init';
 
 const Social = () => {
     const [signInWithGoogle, user, googleError] = useSignInWithGoogle(auth)
-
+    if (user) {
+        console.log(user)
+    }
     let errorElement;
     if (googleError) {
         errorElement = <p className='text-danger'>{googleError?.message}</p>
     }
-    const handleGoogleLogin = () => {
-        signInWithGoogle()
-        console.log('clicked')
-    }
+
     return (
         <div>
             <div className='d-flex align-items-center'>
-                <div style={{ height: '1px' }} className='w-50 bg-primary'></div>
+                <div style={{ height: '1px' }} className='w-50 bg-dark'></div>
                 <p className='mt-2 mx-2'>or</p>
-                <div style={{ height: '1px' }} className='w-50 bg-primary'></div>
+                <div style={{ height: '1px' }} className='w-50 bg-dark'></div>
             </div>
             {errorElement}
-            <div className='d-flex justify-content-center align-items-center'>
-                <button>
+            <div className='d-flex justify-content-center align-items-center social-box'>
+                <button className='social-btn'>
                     <img className='me-4' height={'55px'} src={facebook} alt="" />
                 </button>
-                <button onClick={handleGoogleLogin}>
+                <button className='social-btn' onClick={() => signInWithGoogle()}>
                     <img height={'60px'} src={google} alt="" />
                 </button>
             </div>
