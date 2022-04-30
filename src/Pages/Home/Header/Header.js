@@ -14,9 +14,9 @@ const Header = () => {
     return (
         <div>
             <Navbar
-                collapseOnSelect expand="lg" bg="dark" variant="dark">
+                collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand href="#home" >
+                    <Navbar.Brand as={Link} to="/" >
                         <div className='d-flex align-items-center'>
                             <img height={'70px'} src={logo} alt="" />
                             <h4>Car Paradise</h4>
