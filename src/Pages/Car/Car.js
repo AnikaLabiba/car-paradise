@@ -16,7 +16,7 @@ const Car = ({ car }) => {
                         <div className='mt-1'>
                             <p>${price} million</p>
                             <p><AiOutlineMedicineBox /> {quantity} in stock</p>
-                            <p>Supplied By {supplierName}</p>
+                            <p>Supplied By: {supplierName}</p>
                         </div>
                         <button className='update-btn'><span>Update</span> <FaRegEdit /></button>
                     </div>

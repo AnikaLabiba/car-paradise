@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
+import useCars from '../../Hooks/useCars';
 import Car from '../Car/Car';
 
 const Cars = () => {
-    const [cars, setCars] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/cars')
-            .then(res => res.json())
-            .then(data => setCars(data))
-    }, [])
+    //from custom hook
+    const [cars, setCars] = useCars()
+
     return (
         <div>
             <h2>Availavle Cars {cars.length}</h2>
