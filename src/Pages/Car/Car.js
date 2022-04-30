@@ -27,7 +27,6 @@ const Car = ({ car }) => {
                         <button onClick={() => handleNavigate(_id)} className='update-btn'><span>Update</span> <FaRegEdit /></button>
                     </div>
                 </div>
-
             </div>
         </div>
     );

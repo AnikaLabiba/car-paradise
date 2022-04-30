@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home/Home';
 import Cars from './Pages/Cars/Cars';
 import CarDetails from './Pages/CarDetails/CarDetails';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import AddCar from './Pages/ManageCars/AddCar/AddCar';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <CarDetails></CarDetails>
           </RequireAuth>
         }></Route>
+        <Route path='/addcar' element={<AddCar></AddCar>}></Route>
       </Routes>
     </div>
   );

@@ -1,0 +1,16 @@
+.car-details{
+    width: 100%;
+    border-radius: 10px !important;
+    background: linear-gradient(#d4e8fa, #6495ED);
+}
+.card-btn{
+    border: none;
+    background-color: #2d60be;
+    color: white;
+    padding:8px 15px;
+    border-radius: 10px;
+}
+.card-btn:hover{
+    background-color: #d4e8fa;
+    color: black;
+}

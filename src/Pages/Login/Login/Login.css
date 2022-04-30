@@ -1,8 +1,12 @@
 .form-container{
-    background-color: rgb(80, 78, 78);
+    background: linear-gradient(#d4e8fa, #6495ED);
     color: white;
     padding: 30px;
     width: 25%;
+}
+.form-container .input{
+    background-color: #95b1e4;
+    color: white;
 }
 .form-container .submit-btn{
     background-image: linear-gradient(to right, rgb(185, 183, 183), gray);

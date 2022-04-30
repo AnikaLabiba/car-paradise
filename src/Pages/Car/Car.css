@@ -22,16 +22,29 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-.car .update-btn{
+ .update-btn{
     border: none;
     background-color: #6495ED;
     color: white;
     padding:8px 15px;
     border-radius: 10px;
 }
-.car .update-btn:hover{
+.update-btn:hover{
     background-color: #2d60be;
     color: white; 
+}
+.link-btn{
+    text-decoration: none;
+    font-size: 23px;
+    color: #6495ED;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.link-btn:hover{
+    text-decoration: none;
+    font-size: 23px;
+    color: #274783;
 }
 @media only screen and (max-width:576px) {
     .car{

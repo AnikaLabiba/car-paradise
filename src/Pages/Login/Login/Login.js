@@ -46,14 +46,14 @@ const Login = () => {
             <div className=' mx-auto mt-3 form-container'>
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control ref={emailRef} className='bg-dark border-0' type="email" placeholder="Enter email" required />
+                        <Form.Control ref={emailRef} className='input text-light border-0' type="email" placeholder="Enter email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Control ref={passRef} className='bg-dark border-0 text-muted' type="password" placeholder="Password" required />
+                        <Form.Control ref={passRef} className='input border-0 text-muted' type="password" placeholder="Password" required />
                     </Form.Group>
                     {error}
-                    <p className='text-center text-muted'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
+                    <p className='text-center text-light'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
                     <button className='w-100 submit-btn py-2' type="submit">
                         Login
                     </button>
