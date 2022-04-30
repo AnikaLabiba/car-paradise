@@ -2,9 +2,15 @@ import React from 'react';
 import './Car.css'
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaRegEdit } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Car = ({ car }) => {
-    const { name, img, description, price, supplierName, quantity } = car
+    const { _id, name, img, description, price, supplierName, quantity } = car
+    const navigate = useNavigate()
+
+    const handleNavigate = id => {
+        navigate(`inventory/${id}`)
+    }
     return (
         <div>
             <div className="card car">
@@ -18,7 +24,7 @@ const Car = ({ car }) => {
                             <p><AiOutlineMedicineBox /> {quantity} in stock</p>
                             <p>Supplied By: {supplierName}</p>
                         </div>
-                        <button className='update-btn'><span>Update</span> <FaRegEdit /></button>
+                        <button onClick={() => handleNavigate(_id)} className='update-btn'><span>Update</span> <FaRegEdit /></button>
                     </div>
                 </div>
 

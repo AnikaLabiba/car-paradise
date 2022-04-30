@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import Social from '../Social/Social';
 import './Login.css'
 
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        loginUser,
+        loading,
+        loginError,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const [user] = useAuthState(auth)
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const emailRef = useRef('')
+    const passRef = useRef('')
+
+    let error;
+    if (loginError) {
+        error = <p className='text-danger'>{loginError?.message}</p>
+    }
+
+    let from = location.state?.from?.pathname || "/";
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
+
+    // handling login
     const handleLogin = event => {
         event.preventDefault()
+        const email = emailRef.current.value
+        const password = passRef.current.value
+        signInWithEmailAndPassword(email, password)
+        console.log(email, password)
     }
     return (
         <div>
@@ -14,12 +46,13 @@ const Login = () => {
             <div className=' mx-auto mt-3 form-container'>
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control className='bg-dark border-0' type="email" placeholder="Enter email" required />
+                        <Form.Control ref={emailRef} className='bg-dark border-0' type="email" placeholder="Enter email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Control className='bg-dark border-0 text-muted' type="password" placeholder="Password" required />
+                        <Form.Control ref={passRef} className='bg-dark border-0 text-muted' type="password" placeholder="Password" required />
                     </Form.Group>
+                    {error}
                     <p className='text-center text-muted'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
                     <button className='w-100 submit-btn py-2' type="submit">
                         Login

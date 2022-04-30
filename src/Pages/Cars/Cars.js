@@ -9,8 +9,8 @@ const Cars = () => {
 
     return (
         <div>
-            <h2>Availavle Cars {cars.length}</h2>
-            <div className='container mb-5'>
+            <h2 className='mt-5 text-center'>Total {cars.length} cars in stock</h2>
+            <div className='container my-4'>
                 <Row xs={1} md={2} lg={2} className="g-4">
                     {
                         cars.map(car => <Car
