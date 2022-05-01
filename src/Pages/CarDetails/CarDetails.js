@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
-import { FaRegEdit } from 'react-icons/fa';
-import { Col, Row } from 'react-bootstrap';
+import { BsArrowRight } from 'react-icons/bs';
 import './CarDetails.css'
 
 const CarDetails = () => {
@@ -45,6 +44,7 @@ const CarDetails = () => {
                 </div>
 
             </div>
+            <Link className='link-btn mt-2' to='/cars'><span>Manage Cars</span> <BsArrowRight /></Link>
         </div>
     );
 };

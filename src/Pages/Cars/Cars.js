@@ -2,15 +2,34 @@ import { Row } from 'react-bootstrap';
 import useCars from '../../Hooks/useCars';
 import Car from '../Car/Car';
 import { IoIosAddCircleOutline } from 'react-icons/io';
+import { VscTrash } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 
 const Cars = () => {
     //from custom hook
-    const [cars] = useCars()
+    const [cars, setCars] = useCars()
 
+    //navigate to add new car
     const navigate = useNavigate()
     const handleNavigate = () => {
         navigate(`/addcar`)
+    }
+
+    const handleDelete = id => {
+        const proceed = window.confirm('You want to delete the item?')
+        if (proceed) {
+            const url = `http://localhost:5000/inventory/${id}`
+            fetch(url, {
+                method: 'delete'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    id(data.deletedCount > 0)
+                    const restCars = cars.filter(car => car._id !== id)
+                    setCars(restCars)
+                    alert('Item deleted.')
+                })
+        }
     }
 
     return (
@@ -25,8 +44,10 @@ const Cars = () => {
                     {
                         cars.map(car => <Car
                             key={car._id}
-                            car={car}
-                        ></Car>)
+                            car={car}>
+                            {/* sending btn as props */}
+                            <button onClick={() => handleDelete(car._id)} className='update-btn'><span>Delete</span> <VscTrash /></button>
+                        </Car>)
                     }
                 </Row>
             </div>
