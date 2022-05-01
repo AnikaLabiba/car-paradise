@@ -4,10 +4,13 @@ import Car from '../Car/Car';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { VscTrash } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
+import ReactModal from '../ReactModal/ReactModal';
+import { useRef, useState } from 'react';
 
 const Cars = () => {
     //from custom hook
     const [cars, setCars] = useCars()
+
 
     //navigate to add new car
     const navigate = useNavigate()
@@ -15,22 +18,51 @@ const Cars = () => {
         navigate(`/addcar`)
     }
 
+    const [dialog, setDialog] = useState({
+        message: "",
+        isLoading: false,
+        //Update
+        nameProduct: ""
+    });
+
+    const idCarRef = useRef()
+
+    const handleDialog = (message, isLoading) => {
+        setDialog({
+            message,
+            isLoading,
+        });
+    };
+
+
     const handleDelete = id => {
-        const proceed = window.confirm('You want to delete the item?')
-        if (proceed) {
-            const url = `http://localhost:5000/inventory/${id}`
+        handleDialog("Are you sure you want to delete?", true);
+        idCarRef.current = id;
+
+    }
+
+
+    const areUSureDelete = (choose) => {
+        if (choose) {
+            const url = `http://localhost:5000/inventory/${idCarRef.current}`
             fetch(url, {
                 method: 'delete'
             })
                 .then(res => res.json())
                 .then(data => {
-                    id(data.deletedCount > 0)
-                    const restCars = cars.filter(car => car._id !== id)
-                    setCars(restCars)
-                    alert('Item deleted.')
+                    if (data.deletedCount > 0) {
+                        const restCars = cars.filter(car => car._id !== idCarRef.current)
+                        setCars(restCars)
+                        alert('Item deleted.')
+                        handleDialog("", false);
+                    }
                 })
+
+
+        } else {
+            handleDialog("", false);
         }
-    }
+    };
 
     return (
         <div className='container'>
@@ -51,6 +83,15 @@ const Cars = () => {
                     }
                 </Row>
             </div>
+            {dialog.isLoading && (
+                <ReactModal
+                    //Update
+                    nameProduct={dialog.nameProduct}
+                    onDialog={areUSureDelete}
+                    message={dialog.message}
+                />
+            )}
+
         </div>
     );
 };
