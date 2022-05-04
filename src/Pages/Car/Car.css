@@ -1,18 +1,23 @@
 .car{
     color: white;
-    width: 530px;
-    height: 620px;
+    width: 350px;
+    height: 540px;
     padding: 40px 10px;
     border-radius: 10px !important;
     background: linear-gradient(#d4e8fa, #6495ED);
 }
+.car .car-info{
+    height: 30%;
+}
 .car h4,.details{
     font-weight: 700;
- }
+}
 .car .img-box{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    width: 90%;
 }
 .car img{
+    width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -26,7 +31,7 @@
     border: none;
     background-color: #6495ED;
     color: white;
-    padding:8px 15px;
+    padding:5px;
     border-radius: 10px;
 }
 .update-btn:hover{
@@ -46,14 +51,20 @@
     font-size: 23px;
     color: #274783;
 }
+
+/* making Mobile and tab responsive */
 @media only screen and (max-width:576px) {
     .car{
-       width: 90%;
+       width: 95%;
+       height: auto;
        margin: 0 auto;
     }
     .car img{
         width: 100%;
         height: auto;
+    }
+    .update-btn{
+        width: 50%;
     }
     
 }
@@ -61,6 +72,7 @@
 @media only screen and (min-width: 577px) and (max-width: 992px) {
     .car{
         width: 100%;
+        height: auto;
     }
     .car img{
         width: 100%;
@@ -72,5 +84,8 @@
     }
     .car .details{
         font-size: 15px;
+    }
+    .update-btn{
+        width: 50%;
     }
 }

@@ -25,7 +25,7 @@ const Home = () => {
             <div className="container">
                 <h2 className='mt-5 text-center'>Our Items {selectedCars.length}</h2>
                 <div className='container my-5'>
-                    <Row xs={1} md={2} lg={2} className="g-4">
+                    <Row xs={1} md={2} lg={3} className="g-4">
                         {
                             selectedCars.map(car => <Car
                                 key={car._id}
@@ -36,7 +36,7 @@ const Home = () => {
                     </Row>
                 </div>
                 {/* sending btn as props */}
-                <Link className='link-btn' to='/cars'><span>Manage Cars</span> <BsArrowRight /></Link>
+                <Link className='link-btn' to='/cars'><span>Manage Inventories</span> <BsArrowRight /></Link>
             </div>
         </div>
     );

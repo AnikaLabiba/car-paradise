@@ -68,17 +68,17 @@ const Cars = () => {
         <div className='container'>
             <h2 className='mt-5'>Total {cars.length} cars in stock</h2>
             <div className='d-flex justify-content-end'>
-                <button onClick={handleNavigate} className='update-btn fs-5'>Add new item <IoIosAddCircleOutline /></button>
+                <button onClick={handleNavigate} className='update-btn fs-5 p-2'>Add new item <IoIosAddCircleOutline /></button>
             </div>
 
             <div className=' my-4'>
-                <Row xs={1} md={2} lg={2} className="g-4">
+                <Row xs={1} md={2} lg={3} className="g-4">
                     {
                         cars.map(car => <Car
                             key={car._id}
                             car={car}>
                             {/* sending btn as props */}
-                            <button onClick={() => handleDelete(car._id)} className='update-btn'><span>Delete</span> <VscTrash /></button>
+                            <button onClick={() => handleDelete(car._id)} className='update-btn fs-6'><span>Delete</span> <VscTrash /></button>
                         </Car>)
                     }
                 </Row>

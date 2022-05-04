@@ -102,7 +102,7 @@ const CarDetails = () => {
                 </div>
 
             </div>
-            <Link className='link-btn mt-2' to='/cars'><span>Manage Cars</span> <BsArrowRight /></Link>
+            <Link className='link-btn mt-2' to='/cars'><span>Manage Inventories</span> <BsArrowRight /></Link>
             <ToastContainer />
         </div>
     );

@@ -11,10 +11,12 @@ const Car = (props) => {
     return (
         <div>
             <div className="card car">
-                <h4 className='text-center'>{name}</h4>
-                <p className='text-center details'> {description.slice(0, 100)}</p>
+                <div className='car-info'>
+                    <h4 className='text-center'>{name}</h4>
+                    <p className='text-center details'> {description.slice(0, 100)}</p>
+                </div>
                 <div className='mx-auto mt-3 img-box'>
-                    <img height={'290px'} src={img} alt={name} />
+                    <img height={'170px'} src={img} alt={name} />
                     <div className='d-flex align-items-center justify-content-around p-2 flex-item'>
                         <div className='mt-1'>
                             <p>${price} million</p>
