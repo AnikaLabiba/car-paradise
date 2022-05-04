@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { BsArrowRight } from 'react-icons/bs';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './CarDetails.css'
 
 const CarDetails = () => {
     const [car, setCar] = useState({})
-    const carQuantity = car.quantity
-    const [quantity, setQuantity] = useState(carQuantity)
-
-    //i have a usestate react hook where i have loaded my data from database now i want to put product quantity in another useState and display in UI but the useState initial value is not taking the quantity it's showing undefined what should i do now?
-
-    // console.log(quantity)
     const { id } = useParams()
 
     useEffect(() => {
@@ -44,7 +40,9 @@ const CarDetails = () => {
                 if (data.modifiedCount > 0) {
                     console.log('success', data)
                     setCar(updatedCar)
-                    alert('Quantity is added.')
+                    toast.info('Quantity is added.', {
+                        position: toast.POSITION.TOP_CENTER
+                    })
                     event.target.reset()
                 }
             })
@@ -70,36 +68,42 @@ const CarDetails = () => {
                 if (data.modifiedCount > 0)
                     setCar(updatedCar)
                 console.log('success', data)
-                alert('One item will be deleivered')
+                toast.info('One item will be deleivered', {
+                    position: toast.POSITION.TOP_CENTER
+                })
             })
     }
 
     return (
         <div className='container'>
-            <h2>car details {car.name}</h2>
-            <div className='d-flex justify-content-end mb-2 form-container py-3'>
-                <form className='d-flex' onSubmit={handleIncreaseQuantity}>
-                    <input type="number" name="quantity" id="" placeholder='Quantity' required />
-                    <input className='p-1' type="submit" value="Add" />
+
+            <div className='d-flex justify-content-around align-items-center flex-column flex-lg-row my-2 py-3'>
+                <h2>{car.name} details:</h2>
+
+                <form className='d-flex form-container' onSubmit={handleIncreaseQuantity}>
+                    <input className='w-75' type="number" name="quantity" id="" placeholder='Enter Quantity' required />
+                    <input className='p-1 w-25 increase-btn update-btn' type="submit" value="Add" />
                 </form>
+
             </div>
             <div className='car-details d-flex align-items-center flex-lg-row flex-column flex-sm-column'>
                 <div className='p-5'>
                     <img className='img' height={'290px'} src={car.img} alt={car.name} />
                 </div>
-                <div>
-                    <div>
+                <div className='p-3'>
+                    <div className='fs-5'>
                         <h3>{car.name}</h3>
                         <p>{car.description}</p>
                         <p>${car.price} million</p>
                         <p><AiOutlineMedicineBox /> {car.quantity} in stock</p>
                         <p>Supplied By: {car.supplierName}</p>
                     </div>
-                    <button onClick={handleDecreaseQuantity} className='card-btn'>Delivered</button>
+                    <button onClick={handleDecreaseQuantity} className='card-btn delivered-btn'>Delivered</button>
                 </div>
 
             </div>
             <Link className='link-btn mt-2' to='/cars'><span>Manage Cars</span> <BsArrowRight /></Link>
+            <ToastContainer />
         </div>
     );
 };

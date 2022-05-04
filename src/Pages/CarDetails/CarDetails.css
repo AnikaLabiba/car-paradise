@@ -14,6 +14,20 @@
     background-color: #d4e8fa;
     color: black;
 }
+.car-details .delivered-btn{
+    background-color: #2d60be;
+    color: white; 
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+}
+.car-details .delivered-btn:hover{
+    background-color: #b6c7e7;
+    color: black;
+}
+.form-container .increase-btn{
+    border-radius: 0;
+}
 
 @media only screen and (max-width:576px) {
     .car-details{
