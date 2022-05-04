@@ -3,14 +3,43 @@
     border-radius: 10px !important;
     background: linear-gradient(#d4e8fa, #6495ED);
 }
-.card-btn{
+.car-details-btn{
     border: none;
     background-color: #2d60be;
     color: white;
     padding:8px 15px;
     border-radius: 10px;
 }
-.card-btn:hover{
+.car-details-btn:hover{
     background-color: #d4e8fa;
     color: black;
+}
+
+@media only screen and (max-width:576px) {
+    .car-details{
+       width: 90%;
+       margin: 0 auto;
+    }
+    .car-details img{
+        width: 100%;
+        height: auto;
+    }
+    
+}
+
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .car-details{
+        width: 100%;
+    }
+    .car-details img{
+        width: 100%;
+        height: auto;
+     
+    }
+    .car-details h4{
+        font-size: 18px;
+    }
+    .car-details .details{
+        font-size: 15px;
+    }
 }

@@ -10,7 +10,7 @@ import Banner from '../Banner/Banner';
 const Home = () => {
     //from custom hook
     const [cars] = useCars()
-    const selectedCars = cars.slice(0, 3)
+    const selectedCars = cars.slice(0, 6)
     const navigate = useNavigate()
 
     //nagivate to car details
