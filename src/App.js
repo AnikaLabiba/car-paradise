@@ -8,6 +8,9 @@ import Cars from './Pages/Cars/Cars';
 import CarDetails from './Pages/CarDetails/CarDetails';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import AddCar from './Pages/ManageCars/AddCar/AddCar';
+import AddItem from './Pages/AddItem/AddItem/AddItem';
+import ConfirmOrder from './Pages/AddItem/ConfirmOrder/ConfirmOrder';
+import MyOrders from './Pages/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -23,7 +26,10 @@ function App() {
             <CarDetails></CarDetails>
           </RequireAuth>
         }></Route>
-        <Route path='/addcar' element={<AddCar></AddCar>}></Route>
+        <Route path='/addNewCar' element={<AddCar></AddCar>}></Route>
+        <Route path='/addItem' element={<AddItem></AddItem>}></Route>
+        <Route path='/order/:id' element={<ConfirmOrder></ConfirmOrder>}></Route>
+        <Route path='/myOrders' element={<MyOrders></MyOrders>}></Route>
       </Routes>
     </div>
   );

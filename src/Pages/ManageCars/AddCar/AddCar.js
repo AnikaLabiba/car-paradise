@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddCar = () => {
 
@@ -24,7 +25,7 @@ const AddCar = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data)
-                alert('New Car added')
+                toast('New Car added')
                 event.target.reset()
 
             })
@@ -60,6 +61,7 @@ const AddCar = () => {
                     </button>
 
                 </Form>
+                <ToastContainer />
             </div>
         </div>
     );

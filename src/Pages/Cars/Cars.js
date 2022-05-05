@@ -15,7 +15,7 @@ const Cars = () => {
     //navigate to add new car
     const navigate = useNavigate()
     const handleNavigate = () => {
-        navigate(`/addcar`)
+        navigate(`/addNewCar`)
     }
 
     const [dialog, setDialog] = useState({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import logo from '../../../Images/bg-none.png'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { RiUserHeartLine } from 'react-icons/ri';
 import { AiOutlineLogout } from 'react-icons/ai';
 import './Header.css'
@@ -11,6 +11,12 @@ import { signOut } from 'firebase/auth';
 
 const Header = () => {
     const [user] = useAuthState(auth)
+    const navigate = useNavigate()
+
+    const handleSignOut = () => {
+        signOut(auth)
+        navigate('/')
+    }
     return (
         <div>
             <Navbar
@@ -28,24 +34,17 @@ const Header = () => {
                             {
                                 user && <>
                                     <Nav.Link as={Link} to="/cars">Manage Cars</Nav.Link>
-                                    <Nav.Link as={Link} to="/cars">Add Cars</Nav.Link>
-                                    <Nav.Link as={Link} to="/cars">My items</Nav.Link>
+                                    <Nav.Link as={Link} to="/addItem">Add Cars</Nav.Link>
+                                    <Nav.Link as={Link} to="/myOrders">My items</Nav.Link>
                                 </>
                             }
                             <Nav.Link href="#pricing">Blogs</Nav.Link>
                             <Nav.Link href="#pricing">Car Advice</Nav.Link>
                             <Nav.Link href="#pricing">Customer Reviews</Nav.Link>
-                            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
                         </Nav>
                         <Nav>
                             {
-                                user ? <Nav.Link onClick={() => signOut(auth)} className='fs-5'><span>Logout</span> <AiOutlineLogout /></Nav.Link>
+                                user ? <Nav.Link onClick={handleSignOut} className='fs-5'><span>Logout</span> <AiOutlineLogout /></Nav.Link>
 
                                     : <Nav.Link as={Link} to="/login" className='d-flex align-items-center fs-5'><RiUserHeartLine /> <span className='ms-1'>Login</span></Nav.Link>
                             }

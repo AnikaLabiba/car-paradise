@@ -5,17 +5,11 @@ import { BsArrowRight } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './CarDetails.css'
+import useSingleCar from '../../Hooks/useSingleCar';
 
 const CarDetails = () => {
-    const [car, setCar] = useState({})
     const { id } = useParams()
-
-    useEffect(() => {
-        const url = `http://localhost:5000/inventory/${id}`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setCar(data))
-    }, [id])
+    const [car, setCar] = useSingleCar(id)
 
 
     const handleIncreaseQuantity = event => {
