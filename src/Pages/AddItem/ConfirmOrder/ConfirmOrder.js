@@ -15,8 +15,10 @@ const ConfirmOrder = () => {
         event.preventDefault()
         const order = {
             carId: id,
+            img: car.img,
             email: user.email,
             car: car.name,
+            price: car.price,
             address: event.target.address.value,
             phone: event.target.phone.value
         }
@@ -30,7 +32,9 @@ const ConfirmOrder = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data)
-                toast('Order is Confirmed.')
+                toast('Order is Confirmed.', {
+                    position: toast.POSITION.TOP_CENTER
+                })
                 event.target.reset()
 
             })

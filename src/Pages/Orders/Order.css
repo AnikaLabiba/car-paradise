@@ -1,0 +1,35 @@
+.order-list{
+    width: 60%;
+    margin: 0 auto;
+    padding: 8px 5px;
+    border-radius: 20px;
+    background: linear-gradient(#d4e8fa, #6495ED);
+}
+.order-list img{
+    width: 16%;
+    height: 18%;
+    padding: 8px;
+    border-radius: 20px;
+}
+.order-list button{
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #4b7cd6;
+}
+@media only screen and (max-width:576px){
+    .order-list{
+        width: 95%;
+    }
+    .order-list img{
+        width: 30%;
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .order-list{
+        width: 90%;
+    }
+    .order-list img{
+        width: 26%;
+    } 
+}

@@ -89,7 +89,7 @@ const CarDetails = () => {
                         <h3>{car.name}</h3>
                         <p>{car.description}</p>
                         <p>${car.price} million</p>
-                        <p><AiOutlineMedicineBox /> {car.quantity} in stock</p>
+                        <p><AiOutlineMedicineBox /> {car.quantity > 0 ? `${car.quantity} in stock` : <span className='text-danger'>sold out</span>}</p>
                         <p>Supplied By: {car.supplierName}</p>
                     </div>
                     <button onClick={handleDecreaseQuantity} className='card-btn delivered-btn'>Delivered</button>

@@ -25,7 +25,9 @@ const AddCar = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data)
-                toast('New Car added')
+                toast('New Car added', {
+                    position: toast.POSITION.TOP_CENTER
+                })
                 event.target.reset()
 
             })
