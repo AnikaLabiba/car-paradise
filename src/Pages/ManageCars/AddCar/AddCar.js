@@ -45,7 +45,7 @@ const AddCar = () => {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPrice">
-                        <Form.Control className='input border-0' name='price' type="number" placeholder="Price" required />
+                        <Form.Control className='input border-0' name='price' type="text" placeholder="Price" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicQuantity">

@@ -19,7 +19,7 @@ const Car = (props) => {
                     <img height={'170px'} src={img} alt={name} />
                     <div className='d-flex align-items-center justify-content-around p-2 flex-item'>
                         <div className='mt-1'>
-                            <p>${price} million</p>
+                            <p>${price}</p>
                             <p><AiOutlineMedicineBox /> {car.quantity > 0 ? `${car.quantity} in stock` : <span className='text-danger'>sold out</span>}</p>
                             <p>Supplied By: {supplierName}</p>
                         </div>
