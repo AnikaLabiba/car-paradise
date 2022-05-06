@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Orders from '../Orders/Orders';
 
@@ -18,8 +19,21 @@ const MyOrders = () => {
     const handleDeleteOrder = id => {
         const proceed = window.confirm('You want to cancel the order?')
         if (proceed) {
-            const newOrderList = orders.filter(order => order._id !== id)
-            setOrders(newOrderList)
+            const url = `http://localhost:5000/order/${id}`
+            fetch(url, {
+                method: 'delete'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const newOrderList = orders.filter(order => order._id !== id)
+                        setOrders(newOrderList)
+                        toast('Order canceled.', {
+                            position: toast.POSITION.TOP_CENTER
+                        })
+                    }
+                })
+
         }
     }
 
