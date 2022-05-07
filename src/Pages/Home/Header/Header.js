@@ -1,13 +1,14 @@
 import React from 'react';
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import logo from '../../../Images/bg-none.png'
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Navbar, Container, Nav } from 'react-bootstrap'
+import logo from '../../../Images/logo 2.png'
+import { Link, useNavigate } from 'react-router-dom';
 import { RiUserHeartLine } from 'react-icons/ri';
 import { AiOutlineLogout } from 'react-icons/ai';
 import './Header.css'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import Fade from 'react-reveal/Fade';
 
 const Header = () => {
     const [user] = useAuthState(auth)
@@ -18,41 +19,43 @@ const Header = () => {
         navigate('/')
     }
     return (
-        <div>
-            <Navbar
-                collapseOnSelect expand="lg" bg="light" variant="light">
-                <Container>
-                    <Navbar.Brand as={Link} to="/" >
-                        <div className='d-flex align-items-center'>
-                            <img height={'70px'} src={logo} alt="" />
-                            <h4>Car Paradise</h4>
-                        </div>
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
-                            {
-                                user && <>
-                                    <Nav.Link as={Link} to="/cars">Manage Cars</Nav.Link>
-                                    <Nav.Link as={Link} to="/addItem">Add Cars</Nav.Link>
-                                    <Nav.Link as={Link} to="/myOrders">My items</Nav.Link>
-                                </>
-                            }
-                            <Nav.Link href="#pricing">Blogs</Nav.Link>
-                            <Nav.Link href="#pricing">Car Advice</Nav.Link>
-                            <Nav.Link href="#pricing">Customer Reviews</Nav.Link>
-                        </Nav>
-                        <Nav>
-                            {
-                                user ? <Nav.Link onClick={handleSignOut} className='fs-5'><span>Logout</span> <AiOutlineLogout /></Nav.Link>
+        <>
+            <Fade top>
+                <Navbar
+                    collapseOnSelect expand="lg" className='header' variant="light">
+                    <Container>
+                        <Navbar.Brand as={Link} to="/" >
+                            <div className='d-flex align-items-center'>
+                                <img height={'70px'} src={logo} alt="" />
+                            </div>
+                        </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                        <Navbar.Collapse id="responsive-navbar-nav">
+                            <Nav className="me-auto">
+                                {
+                                    user && <>
+                                        <Nav.Link as={Link} to="/cars">Manage Cars</Nav.Link>
+                                        <Nav.Link as={Link} to="/addItem">Add Cars</Nav.Link>
+                                        <Nav.Link as={Link} to="/myOrders">My items</Nav.Link>
+                                    </>
+                                }
+                                <Nav.Link href="#pricing">Blogs</Nav.Link>
+                                <Nav.Link href="#pricing">Car Advice</Nav.Link>
+                                <Nav.Link href="#pricing">Customer Reviews</Nav.Link>
+                            </Nav>
+                            <Nav>
+                                {
+                                    user ? <Nav.Link onClick={handleSignOut} className='fs-5'><span>Logout</span> <AiOutlineLogout /></Nav.Link>
 
-                                    : <Nav.Link as={Link} to="/login" className='d-flex align-items-center fs-5'><RiUserHeartLine /> <span className='ms-1'>Login</span></Nav.Link>
-                            }
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </div>
+                                        : <Nav.Link as={Link} to="/login" className='d-flex align-items-center fs-5'><RiUserHeartLine /> <span className='ms-1'>Login</span></Nav.Link>
+                                }
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+            </Fade>
+
+        </>
     );
 };
 

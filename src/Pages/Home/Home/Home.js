@@ -6,6 +6,7 @@ import Car from '../../Car/Car';
 import { BsArrowRight } from 'react-icons/bs';
 import { GoRequestChanges } from 'react-icons/go';
 import Banner from '../Banner/Banner';
+import Fade from 'react-reveal/Fade';
 
 const Home = () => {
     //from custom hook
@@ -20,6 +21,14 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            {/* <div>
+                <Fade left>
+                    <h2>Welcome to Car Paradise</h2>
+                </Fade>
+                <Fade right>
+                    <p>We have heno teno so book us</p>
+                </Fade>
+            </div> */}
 
             {/* maximum 6 in home page */}
             <div className="container">

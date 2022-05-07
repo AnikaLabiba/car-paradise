@@ -4,7 +4,7 @@ import { AiOutlineMedicineBox } from 'react-icons/ai';
 
 const Car = (props) => {
     const { car } = props
-    const { name, img, description, price, supplierName, quantity } = car
+    const { name, img, description, price, supplierName } = car
 
 
 

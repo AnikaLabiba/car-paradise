@@ -3,6 +3,7 @@ import { Carousel } from 'react-bootstrap';
 import banner1 from '../../../Images/banner/most.png'
 import banner2 from '../../../Images/banner/banner2.png'
 import banner3 from '../../../Images/banner/banner3.png'
+import { Fade } from 'react-reveal';
 
 
 const Banner = () => {
@@ -16,7 +17,14 @@ const Banner = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>Rolls Royce</h3>
+                        <div>
+                            <Fade left>
+                                <h3>Welcome to Car Paradise.</h3>
+                            </Fade>
+                            <Fade right>
+                                <h5>Find your dream car in a best deal.</h5>
+                            </Fade>
+                        </div>
 
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -27,7 +35,14 @@ const Banner = () => {
                         alt="Second slide"
                     />
                     <Carousel.Caption>
-                        <h3>Ferrai SF90 Stradle</h3>
+                        <div>
+                            <Fade left>
+                                <h3>Welcome to Car Paradise.</h3>
+                            </Fade>
+                            <Fade right>
+                                <h5>Find your dream car in a best deal.</h5>
+                            </Fade>
+                        </div>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -37,7 +52,14 @@ const Banner = () => {
                         alt="Third slide"
                     />
                     <Carousel.Caption>
-                        <h3>Audi-R8-First-Generation</h3>
+                        <div>
+                            <Fade left>
+                                <h3>Welcome to Car Paradise.</h3>
+                            </Fade>
+                            <Fade right>
+                                <h5>Find your dream car in a best deal.</h5>
+                            </Fade>
+                        </div>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
