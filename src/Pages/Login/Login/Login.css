@@ -22,10 +22,10 @@
     background: none;
     border: none;
 }
-/* .social-box .social-btn:hover{
-    background-color: lightgray;
-    border: none;
-} */
+.social-box .social-btn:hover{
+    background-color: rgba(190, 188, 188, 0.788);
+    border-radius: 50px;
+}
 @media only screen and (max-width:576px) {
     .form-container{
        width: 90%;

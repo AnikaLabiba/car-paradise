@@ -1,5 +1,8 @@
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Orders from '../Orders/Orders';
@@ -7,13 +10,34 @@ import Orders from '../Orders/Orders';
 const MyOrders = () => {
     const [user] = useAuthState(auth)
     const [orders, setOrders] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
-        const email = user?.email
-        const url = `http://localhost:5000/order?email=${email}`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setOrders(data))
+        const getOrders = async () => {
+            const email = user?.email
+            const url = `http://localhost:5000/order?email=${email}`
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                setOrders(data)
+            }
+            catch (error) {
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth)
+                    navigate('/login')
+                }
+            }
+            // const url = `http://localhost:5000/order?email=${email}`  
+        }
+        // const email = user?.email
+        // const url = `http://localhost:5000/order?email=${email}`
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then(data => setOrders(data))
+        getOrders()
     }, [user])
 
     const handleDeleteOrder = id => {

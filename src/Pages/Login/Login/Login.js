@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useRef } from 'react';
 import { Form } from 'react-bootstrap';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -29,16 +30,20 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
     if (user) {
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
     }
 
     // handling login
-    const handleLogin = event => {
+    const handleLogin = async event => {
         event.preventDefault()
         const email = emailRef.current.value
         const password = passRef.current.value
-        signInWithEmailAndPassword(email, password)
-        console.log(email, password)
+        await signInWithEmailAndPassword(email, password)
+
+        const { data } = await axios.post('http://localhost:5000/login', { email })
+        localStorage.setItem('accessToken', data.accessToken)
+        navigate(from, { replace: true });
+
     }
     return (
         <div>
@@ -46,7 +51,7 @@ const Login = () => {
             <div className=' mx-auto mt-3 form-container'>
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control ref={emailRef} className='input text-light border-0' type="email" placeholder="Enter email" required />
+                        <Form.Control ref={emailRef} className='input border-0' type="email" placeholder="Enter email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">

@@ -1,21 +1,23 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
 
 const Signup = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     if (user) {
         console.log(user)
     }
-
+    let from = location.state?.from?.pathname || "/";
     const handleSignup = event => {
         event.preventDefault()
         const name = event.target.name.value;
@@ -27,6 +29,7 @@ const Signup = () => {
         if (password === confirmPass) {
             if (password.length > 6) {
                 createUserWithEmailAndPassword(email, password)
+                navigate(from, { replace: true });
             }
             else {
                 alert('Password must be 6 characters')
@@ -44,17 +47,17 @@ const Signup = () => {
             <div className='mx-auto mt-3 form-container'>
                 <Form onSubmit={handleSignup}>
                     <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Control className='bg-dark border-0' type="text" name='name' placeholder="Enter Name" required />
+                        <Form.Control className='input text-dark border-0' type="text" name='name' placeholder="Enter Name" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control className='bg-dark border-0' type="email" name='email' placeholder="Enter email" required />
+                        <Form.Control className='input text-dark border-0' type="email" name='email' placeholder="Enter email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Control className='bg-dark border-0 text-muted' type="password" name='password' placeholder="Password" required />
+                        <Form.Control className='input text-dark border-0 text-muted' type="password" name='password' placeholder="Password" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
-                        <Form.Control className='bg-dark border-0 text-muted' name='confirmPass' type="password" placeholder="Confirm Password" required />
+                        <Form.Control className='input text-dark border-0 text-muted' name='confirmPass' type="password" placeholder="Confirm Password" required />
                     </Form.Group>
                     <p className='text-center text-muted'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
                     <button className='w-100 submit-btn py-2' type="submit">

@@ -24,10 +24,10 @@ const Social = () => {
             {errorElement}
             <div className='d-flex justify-content-center align-items-center social-box'>
                 <button className='social-btn'>
-                    <img className='me-4' height={'55px'} src={facebook} alt="" />
+                    <img className='mx-2' height={'40px'} src={facebook} alt="" />
                 </button>
                 <button className='social-btn' onClick={() => signInWithGoogle()}>
-                    <img height={'60px'} src={google} alt="" />
+                    <img height={'45px'} src={google} alt="" />
                 </button>
             </div>
         </div>
