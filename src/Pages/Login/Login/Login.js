@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import { Form } from 'react-bootstrap';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import Social from '../Social/Social';
 import './Login.css'
 
@@ -15,6 +17,10 @@ const Login = () => {
         loginError,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending, resetPassError] = useSendPasswordResetEmail(
+        auth
+    );
+
     const [user] = useAuthState(auth)
     const location = useLocation()
     const navigate = useNavigate()
@@ -23,14 +29,16 @@ const Login = () => {
     const passRef = useRef('')
 
     let error;
-    if (loginError) {
-        error = <p className='text-danger'>{loginError?.message}</p>
+    if (loginError || resetPassError) {
+        error = <p className='text-danger'>{loginError?.message} {resetPassError?.message}</p>
+    }
+    if (loading || sending) {
+        return <Loading></Loading>
     }
 
     let from = location.state?.from?.pathname || "/";
-
     if (user) {
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
     }
 
     // handling login
@@ -45,8 +53,24 @@ const Login = () => {
         navigate(from, { replace: true });
 
     }
+
+    //reset password
+    const handleResetPassword = async () => {
+        const email = emailRef.current.value
+        if (email) {
+            await sendPasswordResetEmail(email)
+            toast.info('Sent email', {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        else {
+            toast.error('Please enter your email address', {
+                position: toast.POSITION.TOP_CENTER
+            })
+        }
+    }
     return (
-        <div>
+        <div className='fixed-height'>
             <h2 className='text-center mt-5 font-weight-bold'>Please Login</h2>
             <div className=' mx-auto mt-3 form-container'>
                 <Form onSubmit={handleLogin}>
@@ -58,7 +82,7 @@ const Login = () => {
                         <Form.Control ref={passRef} className='input border-0 text-muted' type="password" placeholder="Password" required />
                     </Form.Group>
                     {error}
-                    <p className='text-center text-light'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
+                    <p className='text-center text-light'>Forgot Password?<button onClick={handleResetPassword} className='text-decoration-none btn btn-link'>Reset Password</button></p>
                     <button className='w-100 submit-btn py-2' type="submit">
                         Login
                     </button>
@@ -66,6 +90,7 @@ const Login = () => {
                     <Social></Social>
                 </Form>
             </div>
+            <ToastContainer />
         </div>
     );
 };

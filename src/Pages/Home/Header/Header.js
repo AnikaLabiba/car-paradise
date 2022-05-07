@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap'
-import logo from '../../../Images/logo 2.png'
+import logo from '../../../Images/logo.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { RiUserHeartLine } from 'react-icons/ri';
 import { AiOutlineLogout } from 'react-icons/ai';

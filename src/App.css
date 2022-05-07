@@ -4,3 +4,10 @@
   box-sizing: border-box;
   font-family: 'Josefin Sans', sans-serif;
 }
+.app{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5;
+}

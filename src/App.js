@@ -12,10 +12,11 @@ import AddItem from './Pages/AddItem/AddItem/AddItem';
 import ConfirmOrder from './Pages/AddItem/ConfirmOrder/ConfirmOrder';
 import MyOrders from './Pages/MyOrders/MyOrders';
 import NotFound from './Pages/NotFound/NotFound';
+import Footer from './Pages/Shared/Footer/Footer';
 
 function App() {
   return (
-    <div style={{ background: '#f0f2f5' }}>
+    <div className='app'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -33,6 +34,7 @@ function App() {
         <Route path='/myOrders' element={<MyOrders></MyOrders>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

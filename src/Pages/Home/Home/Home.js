@@ -6,7 +6,6 @@ import Car from '../../Car/Car';
 import { BsArrowRight } from 'react-icons/bs';
 import { GoRequestChanges } from 'react-icons/go';
 import Banner from '../Banner/Banner';
-import Fade from 'react-reveal/Fade';
 
 const Home = () => {
     //from custom hook
@@ -19,17 +18,8 @@ const Home = () => {
         navigate(`inventory/${id}`)
     }
     return (
-        <div>
+        <div className='fixed-height'>
             <Banner></Banner>
-            {/* <div>
-                <Fade left>
-                    <h2>Welcome to Car Paradise</h2>
-                </Fade>
-                <Fade right>
-                    <p>We have heno teno so book us</p>
-                </Fade>
-            </div> */}
-
             {/* maximum 6 in home page */}
             <div className="container">
                 <h2 className='mt-5 text-center'>Our Items {selectedCars.length}</h2>
@@ -45,7 +35,7 @@ const Home = () => {
                     </Row>
                 </div>
                 {/* sending btn as props */}
-                <Link className='link-btn' to='/cars'><span>Manage Inventories</span> <BsArrowRight /></Link>
+                <Link className='link-btn mb-5' to='/cars'><span>Manage Inventories</span> <BsArrowRight /></Link>
             </div>
         </div>
     );

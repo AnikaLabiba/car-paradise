@@ -40,7 +40,7 @@ const ConfirmOrder = () => {
             })
     }
     return (
-        <div className='container'>
+        <div className='container fixed-height my-5'>
             <h2>You are ordering {car.name}</h2>
             <div className='car-details d-flex align-items-center flex-lg-row flex-column flex-sm-column'>
                 <div className='p-5'>

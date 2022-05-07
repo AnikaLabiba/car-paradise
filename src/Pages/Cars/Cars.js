@@ -6,6 +6,7 @@ import { VscTrash } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import ReactModal from '../ReactModal/ReactModal';
 import { useRef, useState } from 'react';
+import { Fade } from 'react-reveal';
 
 const Cars = () => {
     //from custom hook
@@ -66,11 +67,15 @@ const Cars = () => {
 
     return (
         <div className='container'>
-            <h2 className='mt-5'>Total {cars.length} cars in stock</h2>
-            <div className='d-flex justify-content-end'>
-                <button onClick={handleNavigate} className='update-btn fs-5 p-2'>Add new item <IoIosAddCircleOutline /></button>
-            </div>
+            <Fade right>
+                <h2 className='mt-5'>Total {cars.length} cars in stock</h2>
+            </Fade>
+            <Fade left>
+                <div className='d-flex justify-content-end'>
+                    <button onClick={handleNavigate} className='update-btn fs-5 p-2'>Add new item <IoIosAddCircleOutline /></button>
+                </div>
 
+            </Fade>
             <div className=' my-4'>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {

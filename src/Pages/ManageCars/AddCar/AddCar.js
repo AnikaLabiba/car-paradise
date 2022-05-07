@@ -33,7 +33,7 @@ const AddCar = () => {
             })
     }
     return (
-        <div>
+        <div className='fixed-height'>
             <h1 className='text-center my-3'>Add a New Item</h1>
             <div className='w-50 mx-auto form-container'>
                 <Form onSubmit={handleAddNewItem}>

@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import Social from '../Social/Social';
 
 const Signup = () => {
@@ -12,19 +13,24 @@ const Signup = () => {
         createUserWithEmailAndPassword,
         user,
         loading,
-        error,
+        signInError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    if (user) {
-        console.log(user)
+
+    let error;
+    if (signInError) {
+        error = <p className='text-danger'>{signInError?.message}</p>
+    }
+    if (loading) {
+        return <Loading></Loading>
     }
     let from = location.state?.from?.pathname || "/";
+
     const handleSignup = event => {
         event.preventDefault()
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
         const confirmPass = event.target.confirmPass.value;
-
 
         if (password === confirmPass) {
             if (password.length > 6) {
@@ -39,10 +45,10 @@ const Signup = () => {
             alert('Two password did not matched')
             return;
         }
-
     }
+
     return (
-        <div>
+        <div className='fixed-height mb-5'>
             <h2 className='text-center mt-5 font-weight-bold'>Create Account</h2>
             <div className='mx-auto mt-3 form-container'>
                 <Form onSubmit={handleSignup}>
@@ -52,13 +58,13 @@ const Signup = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control className='input text-dark border-0' type="email" name='email' placeholder="Enter email" required />
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control className='input text-dark border-0 text-muted' type="password" name='password' placeholder="Password" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                         <Form.Control className='input text-dark border-0 text-muted' name='confirmPass' type="password" placeholder="Confirm Password" required />
                     </Form.Group>
+                    {error}
                     <p className='text-center text-muted'>Forgot Password?<button className='text-decoration-none btn btn-link'>Reset Password</button></p>
                     <button className='w-100 submit-btn py-2' type="submit">
                         Signup

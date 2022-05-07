@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,12 +16,16 @@ const MyOrders = () => {
             const email = user?.email
             const url = `http://localhost:5000/order?email=${email}`
             try {
-                const { data } = await axios.get(url, {
+                await fetch(url, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
                 })
-                setOrders(data)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        setOrders(data)
+                    })
             }
             catch (error) {
                 if (error.response.status === 401 || error.response.status === 403) {
@@ -30,15 +33,10 @@ const MyOrders = () => {
                     navigate('/login')
                 }
             }
-            // const url = `http://localhost:5000/order?email=${email}`  
         }
-        // const email = user?.email
-        // const url = `http://localhost:5000/order?email=${email}`
-        // fetch(url)
-        //     .then(res => res.json())
-        //     .then(data => setOrders(data))
         getOrders()
     }, [user])
+
 
     const handleDeleteOrder = id => {
         const proceed = window.confirm('You want to cancel the order?')
