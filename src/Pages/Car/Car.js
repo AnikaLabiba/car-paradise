@@ -6,8 +6,6 @@ const Car = (props) => {
     const { car } = props
     const { name, img, description, price, supplierName } = car
 
-
-
     return (
         <div>
             <div className="card car">

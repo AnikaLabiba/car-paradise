@@ -45,7 +45,7 @@ const Cars = () => {
 
     const areUSureDelete = (choose) => {
         if (choose) {
-            const url = `http://localhost:5000/inventory/${idCarRef.current}`
+            const url = `https://mysterious-retreat-05451.herokuapp.com/inventory/${idCarRef.current}`
             fetch(url, {
                 method: 'delete'
             })

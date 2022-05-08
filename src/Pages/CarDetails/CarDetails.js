@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { BsArrowRight } from 'react-icons/bs';
@@ -6,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './CarDetails.css'
 import useSingleCar from '../../Hooks/useSingleCar';
+import { Flip } from 'react-reveal';
 
 const CarDetails = () => {
     const { id } = useParams()
@@ -21,7 +21,7 @@ const CarDetails = () => {
         const updatedQuantity = oldQuantity + newQuantity
         const updatedCar = { ...car, quantity: updatedQuantity }
         console.log(updatedCar)
-        const url = `http://localhost:5000/inventory/${id}`
+        const url = `https://mysterious-retreat-05451.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'put',
             headers: {
@@ -49,7 +49,7 @@ const CarDetails = () => {
         const updatedQuantity = oldQuantity - 1
         const updatedCar = { ...car, quantity: updatedQuantity }
 
-        const url = `http://localhost:5000/inventory/${id}`
+        const url = `https://mysterious-retreat-05451.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'put',
             headers: {
@@ -71,15 +71,19 @@ const CarDetails = () => {
     return (
         <div className='container'>
 
-            <div className='d-flex justify-content-around align-items-center flex-column flex-lg-row my-2 py-3'>
-                <h2>{car.name} details:</h2>
+            <Flip bottom>
+                <div className='d-flex justify-content-around align-items-center flex-column flex-lg-row my-2 py-3'>
 
-                <form className='d-flex form-container' onSubmit={handleIncreaseQuantity}>
-                    <input className='w-75' type="number" name="quantity" id="" placeholder='Enter Quantity' required />
-                    <input className='p-1 w-25 increase-btn update-btn' type="submit" value="Add" />
-                </form>
+                    <h2>{car.name} details:</h2>
 
-            </div>
+
+                    <form className='d-flex form-container' onSubmit={handleIncreaseQuantity}>
+                        <input className='w-75' type="number" name="quantity" id="" placeholder='Enter Quantity' required />
+                        <input className='p-1 w-25 increase-btn update-btn' type="submit" value="Add" />
+                    </form>
+
+                </div>
+            </Flip>
             <div className='car-details d-flex align-items-center flex-lg-row flex-column flex-sm-column'>
                 <div className='p-5'>
                     <img className='img' height={'290px'} src={car.img} alt={car.name} />

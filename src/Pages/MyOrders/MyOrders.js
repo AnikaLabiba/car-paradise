@@ -13,9 +13,9 @@ const MyOrders = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const getOrders = async () => {
+        const getMyItems = async () => {
             const email = user?.email
-            const url = `http://localhost:5000/order?email=${email}`
+            const url = `https://mysterious-retreat-05451.herokuapp.com/inventory?email=${email}`
             try {
                 await fetch(url, {
                     headers: {
@@ -35,14 +35,14 @@ const MyOrders = () => {
                 }
             }
         }
-        getOrders()
+        getMyItems()
     }, [user])
 
 
     const handleDeleteOrder = id => {
         const proceed = window.confirm('You want to cancel the order?')
         if (proceed) {
-            const url = `http://localhost:5000/order/${id}`
+            const url = `https://mysterious-retreat-05451.herokuapp.com/inventory/${id}`
             fetch(url, {
                 method: 'delete'
             })

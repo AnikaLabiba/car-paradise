@@ -8,8 +8,6 @@ import Cars from './Pages/Cars/Cars';
 import CarDetails from './Pages/CarDetails/CarDetails';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import AddCar from './Pages/ManageCars/AddCar/AddCar';
-import AddItem from './Pages/AddItem/AddItem/AddItem';
-import ConfirmOrder from './Pages/AddItem/ConfirmOrder/ConfirmOrder';
 import MyOrders from './Pages/MyOrders/MyOrders';
 import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
@@ -31,8 +29,6 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/addNewCar' element={<AddCar></AddCar>}></Route>
-        <Route path='/addItem' element={<AddItem></AddItem>}></Route>
-        <Route path='/order/:id' element={<ConfirmOrder></ConfirmOrder>}></Route>
         <Route path='/myOrders' element={<MyOrders></MyOrders>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/carAdvice' element={<CarAdvice></CarAdvice>}></Route>

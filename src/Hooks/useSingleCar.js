@@ -4,7 +4,7 @@ const useSingleCar = id => {
     const [car, setCar] = useState({})
 
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${id}`
+        const url = `https://mysterious-retreat-05451.herokuapp.com/inventory/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setCar(data))

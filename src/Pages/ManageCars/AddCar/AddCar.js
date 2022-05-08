@@ -1,22 +1,25 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Fade } from 'react-reveal';
 import { toast, ToastContainer } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 const AddCar = () => {
-
+    const [user] = useAuthState(auth);
 
     const handleAddNewItem = event => {
         event.preventDefault()
+        const email = user.email
         const name = event.target.name.value
         const img = event.target.img.value
         const price = event.target.price.value
         const quantity = event.target.quantity.value
         const supplierName = event.target.supplierName.value
         const description = event.target.description.value
-        const car = { name, img, price, quantity, supplierName, description }
+        const car = { email, name, img, price, quantity, supplierName, description }
 
-        fetch('http://localhost:5000/inventory', {
+        fetch('https://mysterious-retreat-05451.herokuapp.com/inventory', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
