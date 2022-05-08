@@ -13,6 +13,7 @@ import ConfirmOrder from './Pages/AddItem/ConfirmOrder/ConfirmOrder';
 import MyOrders from './Pages/MyOrders/MyOrders';
 import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/addItem' element={<AddItem></AddItem>}></Route>
         <Route path='/order/:id' element={<ConfirmOrder></ConfirmOrder>}></Route>
         <Route path='/myOrders' element={<MyOrders></MyOrders>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

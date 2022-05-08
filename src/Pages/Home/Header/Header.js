@@ -39,9 +39,9 @@ const Header = () => {
                                         <Nav.Link as={Link} to="/myOrders">My items</Nav.Link>
                                     </>
                                 }
-                                <Nav.Link href="#pricing">Blogs</Nav.Link>
-                                <Nav.Link href="#pricing">Car Advice</Nav.Link>
-                                <Nav.Link href="#pricing">Customer Reviews</Nav.Link>
+                                <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
+                                <Nav.Link as={Link} to="/carAdvice">Car Advice</Nav.Link>
+                                <Nav.Link as={Link} to="/reviews">Customer Reviews</Nav.Link>
                             </Nav>
                             <Nav>
                                 {

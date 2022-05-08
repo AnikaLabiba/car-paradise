@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { Fade } from 'react-reveal';
 import { toast, ToastContainer } from 'react-toastify';
 
 const AddCar = () => {
@@ -34,7 +35,9 @@ const AddCar = () => {
     }
     return (
         <div className='fixed-height'>
-            <h1 className='text-center my-3'>Add a New Item</h1>
+            <Fade top>
+                <h1 className='text-center my-3'>Add a New Item</h1>
+            </Fade>
             <div className='w-50 mx-auto form-container'>
                 <Form onSubmit={handleAddNewItem}>
                     <Form.Group className="mb-3" controlId="formBasicName">

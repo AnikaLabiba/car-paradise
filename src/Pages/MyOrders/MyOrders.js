@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Fade } from 'react-reveal';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
@@ -61,7 +62,9 @@ const MyOrders = () => {
 
     return (
         <div className='container'>
-            <h2 className='text-center my-4'>You have {orders.length} orders</h2>
+            <Fade top>
+                <h2 className='text-center my-4'>You have {orders.length} orders</h2>
+            </Fade>
             {
                 orders.map(order => <Orders key={order._id}
                     order={order}
