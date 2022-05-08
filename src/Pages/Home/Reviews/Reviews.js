@@ -1,7 +1,5 @@
 import React from 'react';
 import './Reviews.css'
-import Flip from 'react-reveal/Pulse';
-
 
 const Reviews = () => {
 
@@ -25,16 +23,16 @@ const Reviews = () => {
                         <h4 className='ms-2'>Harry</h4>
                     </div>
                 </div>
-                <Flip>
-                    <div className='car-details mx-4 my-2 p-4'>
-                        <h5>Find it quit professional</h5>
-                        <p>They are just fabulas. Got my favourite car in a budget. They guys really care for their custromers</p>
-                        <div className='d-flex flex-item align-items-center'>
-                            <img src={'https://templates.scriptsbundle.com/carspot/demos/images/users/1.jpg'} alt="" />
-                            <h4 className='ms-2'>Jessica</h4>
-                        </div>
+
+                <div className='car-details mx-4 my-2 p-4'>
+                    <h5>Find it quit professional</h5>
+                    <p>They are just fabulas. Got my favourite car in a budget. They guys really care for their custromers</p>
+                    <div className='d-flex flex-item align-items-center'>
+                        <img src={'https://templates.scriptsbundle.com/carspot/demos/images/users/1.jpg'} alt="" />
+                        <h4 className='ms-2'>Jessica</h4>
                     </div>
-                </Flip>
+                </div>
+
             </div>
         </div>
 

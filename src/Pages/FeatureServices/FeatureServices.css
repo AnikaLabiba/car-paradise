@@ -3,11 +3,13 @@
     transition: transform 1s ease-out 0.3s;
 }
 .services{
-    width: 40%;
+    width: 50%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
-
+.title{
+    color:#2d60be ;
+}
 @media only screen and (max-width:576px) {
     .services-container img{
         width: 70%;
