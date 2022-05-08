@@ -23,7 +23,9 @@ const Footer = () => {
             </div>
             <div className='w-25 mx-auto d-flex justify-content-evenly mb-2'>
                 <Link className='text-decoration-none text-light' to="/cars"> Cars</Link>
-                <Link className='text-decoration-none text-light' to="/addcar">Add Cars</Link>
+                <Link className='text-decoration-none text-light' to="/carAdvice">Car Advice</Link>
+                <Link className='text-decoration-none text-light' to="/manageCar">Manage Car</Link>
+
             </div>
             <p><small>copyright &copy; {year} Car Paradise</small></p>
         </div>

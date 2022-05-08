@@ -6,6 +6,8 @@ import Car from '../../Car/Car';
 import { BsArrowRight } from 'react-icons/bs';
 import { GoRequestChanges } from 'react-icons/go';
 import Banner from '../Banner/Banner';
+import Reviews from '../Reviews/Reviews';
+import FeatureServices from '../../FeatureServices/FeatureServices';
 
 const Home = () => {
     //from custom hook
@@ -37,6 +39,8 @@ const Home = () => {
                 {/* sending btn as props */}
                 <Link className='link-btn mb-5' to='/cars'><span>Manage Inventories</span> <BsArrowRight /></Link>
             </div>
+            <Reviews></Reviews>
+            <FeatureServices></FeatureServices>
         </div>
     );
 };

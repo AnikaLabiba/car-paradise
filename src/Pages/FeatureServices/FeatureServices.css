@@ -1,0 +1,30 @@
+.services-container img{
+    width: 40%;
+    transition: transform 1s ease-out 0.3s;
+}
+.services{
+    width: 40%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media only screen and (max-width:576px) {
+    .services-container img{
+        width: 70%;
+    }
+    .services{
+        width: 90%;
+        
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .services-container img{
+        width: 50%;
+    }
+    .services{
+        width: 90%;
+        
+    }
+    
+}
